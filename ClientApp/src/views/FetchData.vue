@@ -33,11 +33,13 @@
 
     <v-alert :value="showError" type="warning">
       Are you sure you're using ASP.NET Core endpoint? (default at
-      <a href="http://localhost:5000/fetch-data">http://localhost:5000</a>)
+      <a href="http://localhost:5000/fetch-data">http://localhost:5000</a
+      >)
       <br />
-      API call would fail with status code 404 when calling from Vue app (default at
-      <a href="http://localhost:8080/fetch-data">http://localhost:8080</a>) without devServer proxy
-      settings in vue.config.js file.
+      API call would fail with status code 404 when calling from Vue app
+      (default at
+      <a href="http://localhost:8080/fetch-data">http://localhost:8080</a>)
+      without devServer proxy settings in vue.config.js file.
     </v-alert>
   </v-container>
 </template>
@@ -48,7 +50,7 @@ import Vue from 'vue'
 import { Forecast } from '../models/Forecast'
 
 export default Vue.extend({
-  data() {
+  data () {
     return {
       loading: true,
       showError: false,
@@ -63,7 +65,7 @@ export default Vue.extend({
     }
   },
   methods: {
-    getColor(temperature: number) {
+    getColor (temperature: number) {
       if (temperature < 0) {
         return 'blue'
       } else if (temperature >= 0 && temperature < 30) {
@@ -72,7 +74,7 @@ export default Vue.extend({
         return 'red'
       }
     },
-    async fetchWeatherForecasts() {
+    async fetchWeatherForecasts () {
       try {
         const response = await this.$axios.get<Forecast[]>('api/WeatherForecast')
         this.forecasts = response.data
@@ -83,7 +85,7 @@ export default Vue.extend({
       this.loading = false
     }
   },
-  async created() {
+  async created () {
     await this.fetchWeatherForecasts()
   }
 })

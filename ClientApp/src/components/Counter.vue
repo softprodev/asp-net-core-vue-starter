@@ -1,7 +1,6 @@
 <template>
   <div>
-    <p>
-      Current count (Vuex):
+    <p>Current count (Vuex):
       <strong>{{ currentCount }}</strong>
     </p>
     <v-btn class="ma-2" color="info" @click.prevent="increment">Increment</v-btn>
@@ -17,7 +16,7 @@ const namespace = 'counter'
 @Component
 export default class Counter extends Vue {
   @Getter('currentCount', { namespace })
-  private currentCount!: number
+  private currentCount!: number;
 
   @Action('increment', { namespace })
   private incrementCounter!: () => void
@@ -25,11 +24,11 @@ export default class Counter extends Vue {
   @Action('reset', { namespace })
   private resetCounter!: () => void
 
-  private increment() {
+  private increment () {
     this.incrementCounter()
   }
 
-  private reset() {
+  private reset () {
     this.resetCounter()
   }
 }
